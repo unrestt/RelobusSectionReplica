@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2025 at 11:29 PM
+-- Generation Time: Maj 01, 2025 at 10:02 AM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -28,28 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `uzytkownik` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `produkt` varchar(50) NOT NULL,
   `data` date NOT NULL,
-  `liczba_biletow` int(11) NOT NULL,
-  `cena` decimal(10,2) NOT NULL
+  `liczba_biletow` int(11) UNSIGNED NOT NULL DEFAULT 1,
+  `cena` decimal(10,2) UNSIGNED NOT NULL DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `uzytkownik`
---
-
-INSERT INTO `uzytkownik` (`id`, `produkt`, `data`, `liczba_biletow`, `cena`) VALUES
-(1, 'Karnet miesięczny', '0000-00-00', 0, 0.00),
-(2, 'Karnet miesięczny', '0000-00-00', 0, 0.00),
-(3, 'Karnet miesięczny', '0000-00-00', 0, 0.00),
-(4, 'Karnet miesięczny', '0000-00-00', 0, 0.00),
-(5, 'Karnet miesięczny', '0000-00-00', 2, 300.00),
-(6, 'Karnet miesięczny', '2025-04-16', 2, 300.00),
-(7, 'Karnet miesięczny', '2025-04-24', 20, 3000.00),
-(8, 'Karnet miesięczny', '2025-04-16', 5, 750.00),
-(9, 'Karnet miesięczny', '2025-04-16', 5, 750.00),
-(10, 'Karnet miesięczny', '2025-11-06', 4, 600.00);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -69,7 +53,7 @@ ALTER TABLE `uzytkownik`
 -- AUTO_INCREMENT for table `uzytkownik`
 --
 ALTER TABLE `uzytkownik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
