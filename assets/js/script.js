@@ -6,12 +6,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const popupIncorrect = document.getElementById("popupIncorrect");
     const popupCartAdd = document.getElementById("popupCartInfo");
 
+    const increaseFontSizeBtn = document.getElementById("increaseFontSize");
+    const decreaseFontSizeBtn = document.getElementById("decreaseFontSize");
+    const changeContrastBtn = document.getElementById("changeContrast");
+
     function setDateAttributes() {
         const today = new Date();
         const todayDate = today.toISOString().split('T')[0];
         dataInput.value = todayDate;
         dataInput.setAttribute("min", todayDate);
     }
+
+    
 
     function validateForm() {
         const liczbaBiletow = parseInt(liczbBiletowInput.value);
@@ -43,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (getQueryParam("success") === "1") {
+        document.body.classList.toggle("high-contrast");
         popupCartAdd.style.display = "flex";
 
         setTimeout(() => {
@@ -59,4 +66,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setDateAttributes();
     validateForm();
+
+
+
+        const fontSizeChangeFactor = 1.05;
+        const maxFontSizeFactor = 1.7;
+
+        function changeFontSize(factor) {
+            const allTextElements = document.querySelectorAll("body, h1, h2, h3, p, span, li, a, i");
+
+            allTextElements.forEach(function(element) {
+                const currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
+                const originalFontSize = parseFloat(element.getAttribute("data-original-font-size")) || currentFontSize;
+
+                let newFontSize = currentFontSize * factor;
+
+                if (!element.hasAttribute("data-original-font-size")) {
+                    element.setAttribute("data-original-font-size", originalFontSize);
+                }
+
+                const maxFontSize = originalFontSize * maxFontSizeFactor;
+
+                if (newFontSize < originalFontSize)
+                    newFontSize = originalFontSize;
+                else if (newFontSize > maxFontSize)
+                    newFontSize = maxFontSize;
+
+                element.style.fontSize = newFontSize + "px";
+            });
+        }
+
+        increaseFontSizeBtn.addEventListener("click", function() {
+            changeFontSize(fontSizeChangeFactor);
+        });
+
+        decreaseFontSizeBtn.addEventListener("click", function() {
+            changeFontSize(1 / fontSizeChangeFactor);
+        });
+
+        changeContrastBtn.addEventListener("click", function(){
+            document.body.classList.toggle("high-contrast");
+        })
+
+
+
+
 });

@@ -6,6 +6,7 @@
     --light-purple-color: #B79CF4;
     --blue-color: #AAFFFF;
     --blue-2-color: #53CACA;
+    --purple-hover-color: #8048ac;
     --blue-hover-color: #92D2DA;
     --dark-blue-color: #1B0062;
     --yellow-hover-color: #D6FF81;
@@ -22,6 +23,7 @@ html{
     text-decoration: none;
     list-style-type: none;
 }
+
 section{
     margin: auto 0;
 }
@@ -80,6 +82,10 @@ header .container {
     justify-content: flex-end;
     align-items: center;
     height: 100%;
+    gap: 30px;
+}
+.header-buttons-container{
+    display: flex;
 }
 
 .header-top-option-container {
@@ -93,7 +99,35 @@ header .container {
     transition: 0.3s;
 }
 .header-top-option-container:hover p{
-    color: var(--blue-2-color);
+    color: var(--purple-hover-color);
+}
+.help-container{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.help-container i{
+    font-size: 17px;
+    color: var(--color-purple);
+}
+.increase-font-size,
+.decrease-font-size,
+.change-contrast{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.increase-font-size:hover,
+.decrease-font-size:hover,
+.change-contrast:hover{
+    color: var(--purple-hover-color);
+}
+.increase-font-size i:last-of-type, 
+.decrease-font-size i:last-of-type{
+    font-size: 10px;
 }
 /* --------------Nav-------------- */
 #navigation{
@@ -298,7 +332,7 @@ form{
     color: var(--light-purple-color);
 }
 .summary-container p, .summary-container i, .summary-container hr{
-    color: var(--blue-color)
+    color: var(--blue-color);
 }
 .summary-container hr{
     width: 100%;
@@ -394,9 +428,6 @@ footer .container{
 .footer-container:last-child{
     height: 150px;
 }
-.footer-container i:last-child{
-    padding: 5px 7px;
-}
 .footer-container a{
     color: #fff;
     transition: .3s color;
@@ -404,3 +435,129 @@ footer .container{
 .footer-container a:hover{
     color: var(--yellow-hover-color);
 }
+
+/* ---------------High contrast styles--------------- */
+.high-contrast {
+    background-color: #000 !important;
+    color: #FFDD00 !important;
+}
+.high-contrast footer i{
+    background-color: #FFDD00 !important;
+    color: #000 !important;
+}
+.high-contrast .line, .high-contrast #navigation li::after{
+    background-color: #FFDD00 !important;;
+}
+.high-contrast .summary-right-container hr{
+    border-top: 2px solid #FFDD00 !important;
+    background-color: transparent;
+    color: none !important;
+}
+
+.high-contrast button {
+    background-color: #000 !important;
+    color: #FFDD00 !important;
+    border: 2px solid #FFDD00;
+}
+
+.high-contrast a, .high-contrast i, .high-contrast p, .high-contrast span, .high-contrast h1, .high-contrast h2, .high-contrast h3, .high-contrast h4, .high-contrast h5, .high-contrast h6 {
+    color: #FFDD00 !important;
+}
+
+.high-contrast header, 
+.high-contrast section,
+.high-contrast main,
+.high-contrast .main-right-bottom,
+.high-contrast footer{
+    background-color: #000 !important;
+    color: #FFDD00 !important;
+    border: 1px solid #FFDD00;
+}
+
+.high-contrast input, .high-contrast label{
+    background-color: #FFDD00 !important;
+    color: #000 !important
+}
+.high-contrast .input-container input:hover{
+    border-color: #7c6c00;
+}
+.high-contrast .input-container input:focus{
+    border-color: #423900;
+}
+.high-contrast .popup-container{
+    background-color: #FFDD00 !important;
+}
+.high-contrast .popup-container i, .high-contrast .popup-container p{
+    color: #000 !important;
+}
+
+
+
+body.high-contrast .flatpickr-calendar {
+    background-color: #000;
+    color: #FFDD00;
+    border: 1px solid #FFDD00;
+}
+
+body.high-contrast .flatpickr-weekdays {
+    background-color: #000;
+    border-bottom: 1px solid #FFDD00;
+}
+
+body.high-contrast .flatpickr-weekday {
+    color: #FFDD00;
+}
+
+body.high-contrast .flatpickr-day {
+    background: transparent;
+    color: #FFDD00;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+body.high-contrast .flatpickr-day:hover {
+    background-color: #FFDD00;
+    color: #000;
+}
+
+body.high-contrast .flatpickr-day.today {
+    border: 1px solid #FFDD00;
+    background-color: #111;
+}
+
+body.high-contrast .flatpickr-day.selected,
+body.high-contrast .flatpickr-day.startRange,
+body.high-contrast .flatpickr-day.endRange {
+    background-color: #FFDD00;
+    color: #000;
+}
+
+body.high-contrast .flatpickr-day.disabled,
+body.high-contrast .flatpickr-day.disabled:hover {
+    background-color: #222;
+    color: #666;
+    cursor: not-allowed;
+}
+
+body.high-contrast .flatpickr-months {
+    background-color: #000;
+    color: #FFDD00;
+    border-bottom: 1px solid #FFDD00;
+}
+
+body.high-contrast .flatpickr-current-month input.cur-year {
+    color: #FFDD00;
+}
+
+body.high-contrast .flatpickr-prev-month,
+body.high-contrast .flatpickr-next-month {
+    color: #FFDD00;
+}
+
+body.high-contrast .flatpickr-prev-month:hover svg,
+body.high-contrast .flatpickr-next-month:hover svg {
+    fill: #000;
+    background-color: #FFDD00;
+    border-radius: 50%;
+}
+
